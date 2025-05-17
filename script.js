@@ -20,10 +20,38 @@ let indicators = document.querySelectorAll('.indicator');
 
 let i = 0;
 img.src = `${images[0]}`;
-indicators[0].style.borderColor = 'red';
+indicators[0].style.borderColor = 'snow';
 
 btnLeft.addEventListener('click', (event)=>{
     event.preventDefault();
+    prev();
 })
 
-// prev();
+btnRight.addEventListener('click', (event)=>{
+    event.preventDefault();
+    next();
+})
+
+function prev() {
+    i = i - 1;
+    if(i < 0) {
+        i = images.length - 1;
+    }
+    slider.src = `${images[i]}`;
+    for(let i = 0; i < images.length; i++){
+        indicators[i].style.borderColor = 'transparent';
+    }
+    indicators[i].style.borderColor = 'snow';
+}
+
+function next() {
+    i = i + 1;
+    if(i > images.length - 1) {
+        i = 0;
+    }
+    slider.src = `${images[i]}`;
+    for (let i = 0; i < images.length; i++){
+        indicators[i].style.borderColor = 'transparent';
+    }
+    indicators[i].style.borderColor = 'snow';
+}
